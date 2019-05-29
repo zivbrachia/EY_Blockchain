@@ -10,7 +10,7 @@ if (args.length) {
 
     // Example: http://localhost:3000/calc?2*2
     app.get('/calc', async function (req, res) {
-        let calc = new Calculator(Object.keys(req.query)[0]);
+        let calc = new Calculator(Object.keys(req.query)[0].replace(/\s/g, ""));
         const result = await calc.calc();
         res.json(result);
     })
