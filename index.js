@@ -7,9 +7,10 @@ if (args.length) {
 } else {
     const express = require('express');
     const app = express();
+    app.use(express.static(__dirname + '/public'));
 
-    // Example: http://localhost:3000/calc?2*2
-    app.get('/calc', async function (req, res) {
+    // Example: http://localhost:3000/api/calc?2*2
+    app.get('/api/calc', async function (req, res) {
         let calc = new Calculator(Object.keys(req.query)[0].replace(/\s/g, ""));
         const result = await calc.calc();
         res.json(result);
